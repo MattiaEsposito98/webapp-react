@@ -7,3 +7,16 @@
 main {
   flex-grow: 1
 }
+
+.card {
+  width: 300px !important;
+}
+
+.img-card {
+  height: 300px !important;
+}
+
+.logo {
+  height: 100px;
+  width: 100px;
+}

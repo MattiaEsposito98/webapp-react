@@ -1,7 +1,10 @@
 export default function Footer() {
   return (
     <>
-      <h3>Footer</h3>
+      <div className="bg-info">
+        <h3>Footer</h3>
+      </div>
+
     </>
   )
 }
