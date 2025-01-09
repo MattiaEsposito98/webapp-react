@@ -4,12 +4,12 @@ export default function Header() {
 
   return (
     <header>
-      <div>
-        <img src="http://localhost:3000/logo.jpg" alt="" />
-        <Nav />
-      </div>
-
-
+      <section className="container">
+        <div className="d-flex align-items-center justify-content-between">
+          <img src="http://localhost:3000/logo.jpg" alt="" />
+          <Nav />
+        </div>
+      </section>
     </header>
   )
 }
