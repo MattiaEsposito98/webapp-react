@@ -18,7 +18,8 @@ export default function Card({ movie }) {
         <div className="card-body bg-body-secondary">
           <h5 className="card-title">{movie.title}</h5>
           <h6 className="card-subtitle mb-2 text-body-secondary fst-italic">{movie.director}</h6>
-          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p className="card-text">{movie.abstract}</p>
+          <p>{movie.avg_vote}</p>
           <a href="#" className="btn btn-primary">Leggi di più</a>
         </div>
       </div>
