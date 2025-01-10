@@ -27,7 +27,14 @@ export default function Show() {
   return (
     <>
       <h1 className="text-center">Dettaglio Film</h1>
-      {movie ? <ShowCard movie={movie} /> : <p>Caricamento in corso...</p>}
+      <div className="d-flex flex-column gap-2 align-items-start">
+        {movie ?
+          <div className="container">
+            <ShowCard movie={movie} />
+          </div> : <p>Caricamento in corso...</p>
+        }
+      </div>
+
     </>
   );
 }

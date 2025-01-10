@@ -1,8 +1,10 @@
+import ReviewsCard from "./ReviewsCard"
+
 export default function ShowCard({ movie }) {
 
   if (movie.id === 1) {
     movie.image = `${import.meta.env.VITE_BE_HOST}/inception.jpg`
-    console.log(movie.image)
+
   } else if (movie.id === 2) {
     movie.image = `${import.meta.env.VITE_BE_HOST}/the_godfather.jpg`
   } else if (movie.id === 3) {
@@ -16,18 +18,30 @@ export default function ShowCard({ movie }) {
   }
 
 
+
   return (
     <>
-      <div className="card ">
-        <img src={movie.image} className="card-img-top img-fluid img-card" />
-        <div className="card-body bg-body-secondary">
-          <h5 className="card-title">{movie.title}</h5>
-          <h6 className="card-subtitle mb-2 text-body-secondary fst-italic">{movie.director}</h6>
-          <p className="card-text">{movie.abstract}</p>
-          <p>{movie.avg_vote}</p>
-
+      <div className="card mb-3">
+        <div className="row g-0 align-item-center">
+          <div className="col-4">
+            <img src={movie.image} className="img-fluid rounded mt-4 ms-1 " />
+          </div>
+          <div className="col-md-8">
+            <div className="card-body">
+              <h4 className="card-title">{movie.title}</h4>
+              <p className="fst-italic">{movie.director}</p>
+              <p className="card-text">{movie.abstract}</p>
+              <p>{movie.avg_vote}</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      {
+        movie.reviews.map((review) => {
+          return <ReviewsCard key={review.id} review={review} />
+        })
+      }
     </>
   )
 }
