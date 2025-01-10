@@ -13,7 +13,7 @@ export default function HomePage() {
 
           {movies.length ? (
             movies.map((movie) => (
-              <div className="col-4 mb-5 h-100" key={movie.id}>
+              <div className="col-lg-4 mb-5 h-100 col-md-6 " key={movie.id}>
                 <Card movie={movie} />
               </div>
             ))

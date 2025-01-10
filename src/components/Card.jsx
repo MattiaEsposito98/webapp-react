@@ -1,14 +1,4 @@
-// import React from 'react';
-// import {
-//   MDBCard,
-//   MDBCardBody,
-//   MDBCardTitle,
-//   MDBCardSubTitle,
-//   MDBCardText,
-//   MDBCardImage,
-//   MDBBtn,
-//   MDBRipple
-// } from 'mdb-react-ui-kit';
+import { Link } from "react-router-dom"
 
 export default function Card({ movie }) {
   return (
@@ -20,30 +10,11 @@ export default function Card({ movie }) {
           <h6 className="card-subtitle mb-2 text-body-secondary fst-italic">{movie.director}</h6>
           <p className="card-text">{movie.abstract}</p>
           <p>{movie.avg_vote}</p>
-          <a href="#" className="btn btn-primary">Leggi di più</a>
+          <Link to={`/show/${movie.id}`} >
+            <button className="btn btn-primary">Leggi di più</button>
+          </Link>
         </div>
       </div>
     </>
   )
-  //     <MDBCard>
-  //       <MDBRipple rippleColor='light' rippleTag='div' className='bg-image hover-overlay'>
-
-  //         <MDBCardImage className='' src={movie.image} fluid alt='...' />
-  //         <a>
-  //           <div className='mask' style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }}></div>
-  //         </a>
-  //       </MDBRipple>
-  //       <MDBCardBody>
-  //         <MDBCardTitle>{movie.title}</MDBCardTitle>
-  //         <MDBCardSubTitle className='fst-italic'>{movie.director}</MDBCardSubTitle>
-  //         <MDBCardText>
-  //           {movie.abstract}
-  //         </MDBCardText>
-  //         <MDBBtn href='#'>Leggi di più</MDBBtn>
-  //       </MDBCardBody>
-  //     </MDBCard>
-
-
-
-
 }

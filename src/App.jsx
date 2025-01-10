@@ -5,6 +5,7 @@ import About from "./pages/About"
 import Contact from "./pages/Contact"
 import HomePage from "./pages/Homepage"
 import GlobalProvider from "./context/GlobalContext"
+import Show from "./pages/Show"
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
               <Route index element={<HomePage />} />
               <Route path='/about' element={<About />} />
               <Route path='/contact' element={<Contact />} />
+              <Route path="/show/:id" element={<Show />} />
             </Route>
           </Routes>
         </BrowserRouter >

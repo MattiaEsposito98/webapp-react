@@ -14,8 +14,8 @@ const GlobalProvider = ({ children }) => {
       })
       .catch((err) => {
         console.error(err)
-      });
-  };
+      })
+  }
 
   useEffect(() => {
     fetchMovie()
