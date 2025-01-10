@@ -26,7 +26,7 @@ export default function Show() {
 
   return (
     <>
-      <h1 className="text-center">Dettaglio Film</h1>
+      <h1 className="text-center text-info mt-2">Dettaglio Film</h1>
       <div className="d-flex flex-column gap-2 align-items-start">
         {movie ?
           <div className="container">

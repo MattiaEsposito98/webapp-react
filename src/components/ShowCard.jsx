@@ -1,4 +1,6 @@
 import ReviewsCard from "./ReviewsCard"
+import Stars from "./Stars"
+
 
 export default function ShowCard({ movie }) {
 
@@ -31,7 +33,8 @@ export default function ShowCard({ movie }) {
               <h4 className="card-title">{movie.title}</h4>
               <p className="fst-italic">{movie.director}</p>
               <p className="card-text">{movie.abstract}</p>
-              <p>{movie.avg_vote}</p>
+              <Stars avg_vote={movie.avg_vote} />
+
             </div>
           </div>
         </div>
