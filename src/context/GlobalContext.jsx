@@ -5,10 +5,15 @@ export const GlobalContext = createContext()
 
 const GlobalProvider = ({ children }) => {
   const [movies, setMovies] = useState([])
+  const [search, setSearch] = useState('')
 
   const fetchMovie = () => {
     axios
-      .get("http://localhost:3000/api/movies")
+      .get(`${import.meta.env.VITE_API_URL}`, {
+        params: {
+          search: search
+        }
+      })
       .then((response) => {
         setMovies(response.data)
       })
@@ -17,12 +22,19 @@ const GlobalProvider = ({ children }) => {
       })
   }
 
+  //Funzione per cercare un libro
+  function searchMovie(e) {
+    e.preventDefault()
+    console.log("Search movie triggered:", search);
+    fetchMovie()
+  }
+
   useEffect(() => {
     fetchMovie()
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ movies, setMovies }}>
+    <GlobalContext.Provider value={{ movies, setMovies, search, setSearch, searchMovie }}>
       {children}
     </GlobalContext.Provider>
   );
