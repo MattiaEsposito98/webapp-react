@@ -1,8 +1,9 @@
 import ReviewsCard from "./ReviewsCard"
 import Stars from "./Stars"
-
+import { useNavigate } from "react-router-dom"
 
 export default function ShowCard({ movie }) {
+  const navigate = useNavigate()
 
   if (movie.id === 1) {
     movie.image = `${import.meta.env.VITE_BE_HOST}/inception.jpg`
@@ -23,6 +24,10 @@ export default function ShowCard({ movie }) {
 
   return (
     <>
+      <div className="d-flex justify-content-end">
+        <button onClick={() => navigate(-1)} type="button" className="btn btn-outline-warning" >Torna alla home</button>
+      </div>
+
       <div className="card mb-3">
         <div className="row g-0 align-item-center">
           <div className="col-4">
