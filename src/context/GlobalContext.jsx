@@ -1,7 +1,6 @@
 import { createContext, useState, useEffect } from "react"
 import axios from "axios"
-import { use } from "react";
-import { useNavigate } from "react-router-dom";
+
 
 export const GlobalContext = createContext()
 
@@ -37,7 +36,7 @@ const GlobalProvider = ({ children }) => {
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ movies, setMovies, search, setSearch, searchMovie }}>
+    <GlobalContext.Provider value={{ movies, setMovies, search, setSearch, searchMovie, fetchMovie }}>
       {children}
     </GlobalContext.Provider>
   );

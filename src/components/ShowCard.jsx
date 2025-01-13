@@ -1,3 +1,4 @@
+import Form from "./Form"
 import ReviewsCard from "./ReviewsCard"
 import Stars from "./Stars"
 import { useNavigate } from "react-router-dom"
@@ -28,6 +29,7 @@ export default function ShowCard({ movie }) {
         <button onClick={() => navigate(-1)} type="button" className="btn btn-outline-warning" >Torna alla home</button>
       </div>
 
+
       <div className="card mb-3">
         <div className="row g-0 align-item-center">
           <div className="col-4">
@@ -44,12 +46,18 @@ export default function ShowCard({ movie }) {
           </div>
         </div>
       </div>
+      <div className="form">
+        <Form />
+      </div>
+
+
 
       {
         movie.reviews.map((review) => {
           return <ReviewsCard key={review.id} review={review} />
         })
       }
+
     </>
   )
 }

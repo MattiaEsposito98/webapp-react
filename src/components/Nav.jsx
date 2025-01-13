@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Nav() {
   const menu = [
-    { label: 'Home', path: '/' },
+    { label: 'Back', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Contact', path: '/contact' },
   ];
