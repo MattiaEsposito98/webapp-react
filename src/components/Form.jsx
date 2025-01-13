@@ -1,11 +1,12 @@
 import { useState } from "react"
+import axios from "axios"
 
 const initialFormData = {
   name: "",
   text: "",
   vote: ""
 }
-export default function Form() {
+export default function Form({ movie, onSuccess = () => { } }) {
   const [formData, setFormData] = useState(initialFormData)
 
   function handleChange(e) {
@@ -29,14 +30,27 @@ export default function Form() {
       return;
     }
 
-    console.log("Dati inviati:", formData.text.length, {
+    console.log("Dati inviati:", {
       ...formData,
       name: dataName
 
-    });
+    })
 
-    setFormData(initialFormData)
+    axios.post(`${import.meta.env.VITE_API_URL}/${movie.id}/reviews`, {
+      name: dataName,
+      text: formData.text,
+      vote: vote
+    })
+      .then(res => {
+        console.log(res)
+        setFormData(initialFormData)
+        onSuccess()
+      }).catch(err => {
+        console.log(err)
+      })
+
   }
+
 
   return (
     <form className="d-flex flex-column mb-3" onSubmit={handleSubmit} >

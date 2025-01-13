@@ -3,7 +3,7 @@ import ReviewsCard from "./ReviewsCard"
 import Stars from "./Stars"
 import { useNavigate } from "react-router-dom"
 
-export default function ShowCard({ movie }) {
+export default function ShowCard({ movie, onSuccess }) {
   const navigate = useNavigate()
 
   if (movie.id === 1) {
@@ -47,7 +47,8 @@ export default function ShowCard({ movie }) {
         </div>
       </div>
       <div className="form">
-        <Form />
+        <Form movie={movie} onSuccess={onSuccess} />
+        {/* onSucess sarebbe la funzione fetchMovie che viene passata come prop */}
       </div>
 
 

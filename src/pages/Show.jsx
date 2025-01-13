@@ -30,7 +30,7 @@ export default function Show() {
       <div className="d-flex flex-column gap-2 align-items-start">
         {movie ?
           <div className="container">
-            <ShowCard movie={movie} />
+            <ShowCard movie={movie} onSuccess={fetchMovie} />
           </div> : <p>Caricamento in corso...</p>
         }
       </div>

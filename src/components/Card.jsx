@@ -4,7 +4,7 @@ import Stars from "./Stars"
 export default function Card({ movie }) {
   return (
     <>
-      <div className="card ">
+      <div className="card h-75">
         <img src={movie.image} className="card-img-top img-fluid img-card" />
         <div className="card-body bg-body-secondary">
           <h5 className="card-title">{movie.title}</h5>
