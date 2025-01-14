@@ -7,8 +7,11 @@ export const GlobalContext = createContext()
 const GlobalProvider = ({ children }) => {
   const [movies, setMovies] = useState([])
   const [search, setSearch] = useState('')
+  const [isLoading, setIsLoading] = useState(true)
+
 
   const fetchMovie = () => {
+    setIsLoading(true)
     axios
       .get(`${import.meta.env.VITE_API_URL}`, {
         params: {
@@ -20,6 +23,9 @@ const GlobalProvider = ({ children }) => {
       })
       .catch((err) => {
         console.error(err)
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }
 
@@ -36,7 +42,7 @@ const GlobalProvider = ({ children }) => {
   }, []);
 
   return (
-    <GlobalContext.Provider value={{ movies, setMovies, search, setSearch, searchMovie, fetchMovie }}>
+    <GlobalContext.Provider value={{ movies, setMovies, search, setSearch, searchMovie, fetchMovie, isLoading, setIsLoading }}>
       {children}
     </GlobalContext.Provider>
   );

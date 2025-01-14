@@ -3,20 +3,25 @@ import { useParams } from "react-router-dom"
 import { GlobalContext } from "../context/GlobalContext"
 import ShowCard from "../components/ShowCard"
 import axios from "axios"
+import Loader from "../components/Loader"
 
 export default function Show() {
   const { id } = useParams()
-  const { movies } = useContext(GlobalContext)
+  const { movies, setIsLoading } = useContext(GlobalContext)
   const [movie, setMovie] = useState(null)
 
 
   function fetchMovie() {
+    setIsLoading(true)
     axios.get(`${import.meta.env.VITE_API_URL}/${id}`)
       .then(response => {
         setMovie(response.data);
       })
       .catch(err => {
         console.error("Errore nel recupero dei dati:", err);
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }
 
@@ -30,8 +35,9 @@ export default function Show() {
       <div className="d-flex flex-column gap-2 align-items-start">
         {movie ?
           <div className="container">
-            <ShowCard movie={movie} onSuccess={fetchMovie} />
-          </div> : <p>Caricamento in corso...</p>
+            <ShowCard movie={movie} fetchMovie={fetchMovie} />
+            {/* passiamo come prop movie e fetchMovie a ShowCard */}
+          </div> : <Loader />
         }
       </div>
 

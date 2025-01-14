@@ -1,13 +1,16 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from "axios"
+import { GlobalContext } from "../context/GlobalContext"
 
 const initialFormData = {
   name: "",
   text: "",
   vote: ""
 }
-export default function Form({ movie, onSuccess = () => { } }) {
+
+export default function Form({ movie, fetchMovie }) {
   const [formData, setFormData] = useState(initialFormData)
+  const { setIsLoading } = useContext(GlobalContext)
 
   function handleChange(e) {
     const { value, name } = e.target
@@ -26,7 +29,8 @@ export default function Form({ movie, onSuccess = () => { } }) {
 
     // Validazione
     if (!dataName || dataName.length > 255 || !vote || vote < 1 || vote > 5 || formData.text.length > 255) {
-      console.log("Il modulo non è valido",);
+      console.log("Il modulo non è valido",)
+      alert("Dati non validi")
       return;
     }
 
@@ -36,6 +40,7 @@ export default function Form({ movie, onSuccess = () => { } }) {
 
     })
 
+    setIsLoading(true)
     axios.post(`${import.meta.env.VITE_API_URL}/${movie.id}/reviews`, {
       name: dataName,
       text: formData.text,
@@ -44,9 +49,12 @@ export default function Form({ movie, onSuccess = () => { } }) {
       .then(res => {
         console.log(res)
         setFormData(initialFormData)
-        onSuccess()
+        fetchMovie()
       }).catch(err => {
         console.log(err)
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
 
   }
